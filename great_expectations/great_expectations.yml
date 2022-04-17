@@ -15,41 +15,61 @@ config_version: 3.0
 # add a new datasource. Read more at https://docs.greatexpectations.io/en/latest/reference/core_concepts/datasource.html
 datasources:
   hays_case_json:
+    class_name: Datasource
     data_connectors:
       default_inferred_data_connector_name:
+        class_name: InferredAssetFilesystemDataConnector
+        base_directory: ../data/hays/case_json
         default_regex:
           group_names:
             - data_asset_name
           pattern: (.*)
-        class_name: InferredAssetFilesystemDataConnector
-        base_directory: ../data/hays/case_json
         module_name: great_expectations.datasource.data_connector
       default_runtime_data_connector_name:
         class_name: RuntimeDataConnector
         batch_identifiers:
           - default_identifier_name
         module_name: great_expectations.datasource.data_connector
-    class_name: Datasource
     execution_engine:
       class_name: PandasExecutionEngine
       module_name: great_expectations.execution_engine
     module_name: great_expectations.datasource
   hays_events:
+    class_name: Datasource
     data_connectors:
       default_inferred_data_connector_name:
+        class_name: InferredAssetFilesystemDataConnector
+        base_directory: ../data/hays/events
         default_regex:
           group_names:
             - data_asset_name
           pattern: (.*)
-        class_name: InferredAssetFilesystemDataConnector
-        base_directory: ../data/hays/events
         module_name: great_expectations.datasource.data_connector
       default_runtime_data_connector_name:
         class_name: RuntimeDataConnector
         batch_identifiers:
           - default_identifier_name
         module_name: great_expectations.datasource.data_connector
+    execution_engine:
+      class_name: PandasExecutionEngine
+      module_name: great_expectations.execution_engine
+    module_name: great_expectations.datasource
+  hays_charges:
     class_name: Datasource
+    data_connectors:
+      default_inferred_data_connector_name:
+        class_name: InferredAssetFilesystemDataConnector
+        base_directory: ../data/hays/charges
+        default_regex:
+          group_names:
+            - data_asset_name
+          pattern: (.*)
+        module_name: great_expectations.datasource.data_connector
+      default_runtime_data_connector_name:
+        class_name: RuntimeDataConnector
+        batch_identifiers:
+          - default_identifier_name
+        module_name: great_expectations.datasource.data_connector
     execution_engine:
       class_name: PandasExecutionEngine
       module_name: great_expectations.execution_engine
